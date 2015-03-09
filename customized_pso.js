@@ -137,6 +137,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		
 		// go through iteration
 		go_iteration : function(){
+			console.log("start iteration");
 			for(var ith = 0; ith < this.config.iteration; ith++ ){
 				this.config.learning_rate_self = this.config.learning_rate_self_param_max - (this.config.learning_rate_self_param_max - this.config.learning_rate_self_param_min) * (ith + 1) / this.config.iteration;
 				
