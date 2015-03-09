@@ -37,7 +37,7 @@ my_neural_network.init_synpatic = function(){
 	
 	//
 	my_neural_network.test_perceptron = function(){
-		var my_perceptron = new my_neural_network.perceptron(2,3,1);
+		var my_perceptron = new my_neural_network.Perceptron(2,3,1);
 		var my_trainer = new my_neural_network.trainer(my_perceptron);
 		
 		my_trainer.XOR();
