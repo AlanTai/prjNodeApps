@@ -186,7 +186,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.performance_index_set = [];
 				for(var jth = 0; jth < this.config.particles_size; jth++){
 					temp_particle_values = this.config.particles_values[jth];
-					
+					console.log("optimization...");
 					// performance index
 					var performance_index;
 					if(this.config.customized_performance_index === undefined){
@@ -238,7 +238,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		start_optimization : function(){
 			this.init_pso();
 			this.go_iteration();
-			console.log("end");
+			console.log("end...");
 			console.log(JSON.stringify(this.config.global_optimal,2,2));
 		}
 }
