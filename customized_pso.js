@@ -101,7 +101,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
-				temp_particle_values = this.config.particles_values[ith];
+				var temp_particle_values = this.config.particles_values[ith];
 				
 				var performance_index;
 				if(this.config.customized_performance_index === undefined){
@@ -183,11 +183,13 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.particles_values = numeric.add(max_replaced_values, max_original_values);
 				
 				// evaluate performance
-				var temp_particle_values = 0;
 				this.config.performance_index_set = [];
+				
+				console.log("before optimization...");
 				for(var jth = 0; jth < this.config.particles_size; jth++){
+					var temp_particle_values = [];
 					temp_particle_values = this.config.particles_values[jth];
-					console.log("optimization...");
+					
 					// performance index
 					var performance_index;
 					if(this.config.customized_performance_index === undefined){
