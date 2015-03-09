@@ -11,7 +11,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		
 		// configuration
 		config : {
-			parameters_range : [[-15, -15],[15, 15]], // ranges of particles;
+			variable_ranges : [[-15, -15],[15, 15]], // ranges of particles;
 														// row 1 represent low
 														// boundary and row 2
 														// represent up boundary
@@ -74,17 +74,24 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			global_optimal_value_set : [],
 			global_optimal_particles_set : [],
 			
+			// customized performance index
+			customized_performance_index : undefined,
+		},
+		
+		set_customized_performance_index_and_variable_ranges : function(arg_customized_performance_index, arg_variable_ranges){
+			this.config.customized_performance_index = arg_customized_performance_index;
+			this.config.variable_ranges = arg_variable_ranges;
 		},
 		
 		// initialization function
 		init_pso : function(){
 			/* new */
-			this.config.low_boundaries = this.config.parameters_range[0];
-			this.config.up_boundaries = this.config.parameters_range[1];
+			this.config.low_boundaries = this.config.variable_ranges[0];
+			this.config.up_boundaries = this.config.variable_ranges[1];
 			this.config.diff_of_ranges = numeric.sub(this.config.up_boundaries, this.config.low_boundaries);
 			
 			// init particles' values
-			this.config.particles_values = numeric.random([this.config.particles_size, this.config.parameters_range[0].length]);
+			this.config.particles_values = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0], [0, this.config.diff_of_ranges[1]]]);
 			var temp_low_boundaries_matrix = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
@@ -96,7 +103,13 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			for(var ith = 0; ith < this.config.particles_size; ith++){
 				temp_particle_values = this.config.particles_values[ith];
 				
-				var performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1] - 1)) * (Math.cos(temp_particle_values[0] + 0.3) - Math.sin(temp_particle_values[1])) + (1 - Math.sin(temp_particle_values[0]));
+				var performance_index;
+				if(this.config.customized_performance_index === undefined){
+					performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1] - 1)) * (Math.cos(temp_particle_values[0] + 0.3) - Math.sin(temp_particle_values[1])) + (1 - Math.sin(temp_particle_values[0]));
+				}else{
+					performance_index = this.config.customized_performance_index.apply(undefined, temp_particle_values);
+				}
+				
 				if (performance_index > this.config.Emax){
 					performance_index = this.config.Emax;
 				}
@@ -130,8 +143,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.learning_rate_cognitive = this.config.learning_rate_cognitive_max - (this.config.learning_rate_cognitive_max - this.config.learning_rate_cognitive_min) * (ith + 1) / this.config.iteration; //
 				this.config.learning_rate_social = 4.1 - this.config.learning_rate_cognitive;
 				
-				var random_factor_cognitive = numeric.random([this.config.particles_size, this.config.parameters_range[0].length]);
-				var random_factor_social = numeric.random([this.config.particles_size, this.config.parameters_range[0].length]);
+				var random_factor_cognitive = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
+				var random_factor_social = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 				
 				var temp_updated_velocity = [];
 				var updated_self_learning_rate = numeric.mul(this.config.learning_rate_self, this.config.particles_velocity);
@@ -147,11 +160,9 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				// update velocity
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
 
-				
 				// update particles' values
 				this.config.particles_values = numeric.add(this.config.particles_values, this.config.particles_velocity);
 
-				
 				// find out values outside boundaries
 				var low_boundaries_set = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 				var up_boundaries_set = numeric.rep([this.config.particles_size], this.config.up_boundaries);
@@ -176,7 +187,14 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				for(var jth = 0; jth < this.config.particles_size; jth++){
 					temp_particle_values = this.config.particles_values[jth];
 					
-					var performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1] - 1)) * (Math.cos(temp_particle_values[0] + 0.3) - Math.sin(temp_particle_values[1])) + (1 - Math.sin(temp_particle_values[0]));
+					// performance index
+					var performance_index;
+					if(this.config.customized_performance_index === undefined){
+						performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1] - 1)) * (Math.cos(temp_particle_values[0] + 0.3) - Math.sin(temp_particle_values[1])) + (1 - Math.sin(temp_particle_values[0]));
+					}else{
+						performance_index = this.config.customized_performance_index.apply(undefined, temp_particle_values);
+					}
+					
 					if (performance_index > this.config.Emax){
 						performance_index = this.config.Emax;
 					}
@@ -186,9 +204,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					this.config.performance_index_set.push(performance_index);
 				}
 				
-				//
+				// temp cost
 				var temp_cost_set = numeric.mul(- this.config.max_min_factor, this.config.performance_index_set);
-				
 				
 				var temp_better_cost_set = numeric.lt(temp_cost_set, this.config.local_optimal_value_set);
 				var not_temp_better_cost_set = numeric.not(temp_better_cost_set);
@@ -226,4 +243,15 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 }
 
 // test
+// GLOBAL.particles_swarm_optimization.start_optimization();
+
+GLOBAL.customized_optimization = GLOBAL.customized_optimization || {};
+GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z){
+	/* Performance index for Demo:
+	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z); */
+	return Math.sin(arg_x) * Math.cos(arg_y + 0.5 * arg_x) + Math.pow(arg_z, 2) * Math.cos(arg_x + arg_y * arg_z);
+};
+
+GLOBAL.customized_optimization.variable_ranges = [[-10, 20], [30, 50], [-20, 30]];
+GLOBAL.particles_swarm_optimization.set_customized_performance_index_and_variable_ranges(GLOBAL.customized_optimization.performance_index, GLOBAL.customized_optimization.variable_ranges);
 GLOBAL.particles_swarm_optimization.start_optimization();
