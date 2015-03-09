@@ -33,7 +33,7 @@ my_neural_network.init_synpatic = function(){
 	my_neural_network.Perceptron.prototype = new my_neural_network.Network();
 	my_neural_network.Perceptron.prototype.constructor = my_neural_network.Perceptron;
 	
-	console.log("Successfully Initiate neural-Network elements");
+	console.log("Successfully initiate neural-network elements");
 	
 	//
 	my_neural_network.test_perceptron = function(){

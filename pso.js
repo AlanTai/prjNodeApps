@@ -96,7 +96,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			for(var ith = 0; ith < this.config.particles_size; ith++){
 				temp_particle_values = this.config.particles_values[ith];
 				
-				var performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1]-1)) * (Math.cos(temp_particle_values[0]+0.3) - Math.sin(temp_particle_values[1]))+(1-Math.sin(temp_particle_values[0]));
+				var performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1] - 1)) * (Math.cos(temp_particle_values[0] + 0.3) - Math.sin(temp_particle_values[1])) + (1 - Math.sin(temp_particle_values[0]));
 				if (performance_index > this.config.Emax){
 					performance_index = this.config.Emax;
 				}
