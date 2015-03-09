@@ -11,4 +11,4 @@ my_neural_network.Trainer = my_synaptic.Trainer,
 my_neural_network.Architect = my_synaptic.Architect;
 
 //
-my_neural_network.Perceptron(){}
+my_neural_network.Perceptron = function(){}
