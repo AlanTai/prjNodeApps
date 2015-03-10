@@ -98,13 +98,13 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				diff[ith] = this.config.diff_of_ranges[ith];
 				diff_ary.push(diff);
 			}
-			// this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0, 0], [0, this.config.diff_of_ranges[1], 0], [0, 0, this.config.diff_of_ranges[2]]]); // need to be modified
-			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, diff_ary); // need to be modified
+			
+			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, diff_ary);
 			var temp_low_boundaries_matrix = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
 			
 			// init particles velocity
-			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0, 0]); // need to be modified
+			this.config.particles_velocity = numeric.rep([this.config.particles_size], Array.apply(null, new Array(this.config.variable_ranges[0].length)).map(Number.prototype.valueOf, 0)); // need to be modified
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
