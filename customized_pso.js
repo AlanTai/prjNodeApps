@@ -245,8 +245,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		// start optimization
 		start_optimization : function(){
 			this.init_pso();
-			this.go_iteration();
-			console.log(JSON.stringify(this.config.global_optimal,2,2));
+			//this.go_iteration();
+			//console.log(JSON.stringify(this.config.global_optimal,2,2));
 		}
 }
 
