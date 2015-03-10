@@ -17,7 +17,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 														// represent up boundary
 			particles_size : 60, // size of particles swarm
 			iteration : 50, // iteration number
-			max_min_factor : 1, // 1 means to find max; -1 means to find min
+			max_min_factor : -1, // 1 means to find max; -1 means to find min
 			Emax : Number.MAX_VALUE, // maximum value
 			Emin : -Number.MAX_VALUE, // minimum value
 			Type : 0, // 0 for real number; 1 for integer
@@ -221,7 +221,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		start_optimization : function(){
 			this.init_pso();
 			this.go_iteration();
-			console.log(JSON.stringify(this.config.global_optimal,2,2));
+			console.log( -this.config.max_min_factor * this.config.global_optimal);
 		}
 }
 
