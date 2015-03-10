@@ -99,7 +99,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
 			
 			// init particles velocity
-			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0, 0]); // need to be modified
+			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0]); // need to be modified
+			console.log(this.config.particles_velocity);
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
@@ -245,7 +246,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		// start optimization
 		start_optimization : function(){
 			this.init_pso();
-			this.go_iteration();
+			//this.go_iteration();
 			//console.log(JSON.stringify(this.config.global_optimal,2,2));
 		}
 }
