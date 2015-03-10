@@ -99,7 +99,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
 			
 			// init particles velocity
-			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0]);
+			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0, 0]); // need to be modified
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
@@ -121,7 +121,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				}
 				this.config.performance_initial_index_set.push(performance_index);
 			}
-			console.log(JSON.stringify(this.config.performance_initial_index_set, 2, 2));
+			// console.log(JSON.stringify(this.config.performance_initial_index_set, 2, 2));
 			
 			// update optimal
 			var temp_cost = numeric.mul(- this.config.max_min_factor, this.config.performance_initial_index_set);
@@ -245,7 +245,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		// start optimization
 		start_optimization : function(){
 			this.init_pso();
-			//this.go_iteration();
+			this.go_iteration();
 			//console.log(JSON.stringify(this.config.global_optimal,2,2));
 		}
 }
