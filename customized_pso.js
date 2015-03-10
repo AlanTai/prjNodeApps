@@ -223,7 +223,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var temp_better_cost_set_ary = [], not_temp_better_cost_set_ary = [];
 				for(kth = 0; kth < this.config.variable_ranges[0].length ; kth++){
 					temp_better_cost_set_ary.push(temp_better_cost_set);
-					not_temp_better_cost_set_ary,push(not_temp_better_cost_set);
+					not_temp_better_cost_set_ary.push(not_temp_better_cost_set);
 				}
 				
 				var better_cost_set = numeric.transpose(temp_better_cost_set_ary);
