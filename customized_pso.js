@@ -209,8 +209,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					this.config.performance_index_set.push(performance_index);
 				}
 				console.log(this.config.performance_index_set);
-				if(ith == 2){
-				return;
+				if(ith == 1){
+					return;
 				}
 				// temp cost
 				var temp_cost_set = numeric.mul(- this.config.max_min_factor, this.config.performance_index_set);
