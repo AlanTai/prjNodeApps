@@ -185,9 +185,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var max_original_values = numeric.mul(not_outside_max_boundary, this.config.particles_values);
 				
 				this.config.particles_values = numeric.add(max_replaced_values, max_original_values);
-				console.log('particles_velocity:');
-				console.log(this.config.particles_velocity);
-				return;
 				
 				// evaluate performance
 				this.config.performance_index_set = [];
@@ -202,6 +199,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					}else{
 						performance_index = this.config.customized_performance_index.apply(undefined, temp_particle_values);
 					}
+					console.log(temp_particle_values);
+					return;
 					
 					if (performance_index > this.config.Emax){
 						performance_index = this.config.Emax;
