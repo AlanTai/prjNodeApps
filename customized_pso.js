@@ -262,6 +262,6 @@ GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z)
 	return performance_value;
 };
 
-GLOBAL.customized_optimization.variable_ranges = [[-10, 20], [30, 50], [-20, 30]];
+GLOBAL.customized_optimization.variable_ranges = [[-10, 20, -15], [30, 50, 25]];
 GLOBAL.particles_swarm_optimization.set_customized_performance_index_and_variable_ranges(GLOBAL.customized_optimization.performance_index, GLOBAL.customized_optimization.variable_ranges);
 GLOBAL.particles_swarm_optimization.start_optimization();
