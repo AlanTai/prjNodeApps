@@ -199,8 +199,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					}else{
 						performance_index = this.config.customized_performance_index.apply(undefined, temp_particle_values);
 					}
-					console.log(performance_index);
-					return;
 					
 					if (performance_index > this.config.Emax){
 						performance_index = this.config.Emax;
@@ -210,6 +208,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					}
 					this.config.performance_index_set.push(performance_index);
 				}
+				console.log(this.config.performance_index_set);
+				return;
 				
 				// temp cost
 				var temp_cost_set = numeric.mul(- this.config.max_min_factor, this.config.performance_index_set);
@@ -225,7 +225,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
 				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
 				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
-				
 				
 				var temp_optimal = Math.min.apply(Math, this.config.local_optimal_value_set);
 				var temp_optimal_index = this.config.local_optimal_value_set.indexOf(temp_optimal);
