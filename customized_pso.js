@@ -217,15 +217,16 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.local_optimal_value_set = numeric.add(replaced_cost_set, original_cost_set);
 				
 				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set]);
-				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
-				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
-				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
-				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
 				// test
 				if(ith == 1){
 					console.log(better_cost_set); // bug with particles_velocity
 					return;
 				}
+				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
+				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
+				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
+				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
+				
 				var temp_optimal = Math.min.apply(Math, this.config.local_optimal_value_set);
 				var temp_optimal_index = this.config.local_optimal_value_set.indexOf(temp_optimal);
 				var pre_global_optimal = this.config.global_optimal;
