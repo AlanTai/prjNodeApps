@@ -132,6 +132,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.local_optimal_particles_set = numeric.rep([this.config.particles_size], temp_optimal_particle);
 			this.config.global_optimal_particles_set = this.config.local_optimal_particles_set;
 			this.config.local_optimal_value_set = numeric.rep([this.config.particles_size], this.config.min_cost);
+			console.log(this.config.local_optimal_value_set);
 			
 			this.config.mean_cost = numeric.sum(temp_cost) / this.config.particles_size;
 			
@@ -222,6 +223,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					console.log(better_cost_set); // bug with particles_velocity
 					return;
 				}
+				
 				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
 				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
 				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
@@ -244,7 +246,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		// start optimization
 		start_optimization : function(){
 			this.init_pso();
-			this.go_iteration();
+			//this.go_iteration();
 			//console.log(JSON.stringify(this.config.global_optimal,2,2));
 		}
 }
