@@ -220,16 +220,18 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var original_cost_set = numeric.mul(not_temp_better_cost_set, this.config.local_optimal_value_set);
 				this.config.local_optimal_value_set = numeric.add(replaced_cost_set, original_cost_set);
 				
-				var temp_better_cost_set_ary = [];
+				var temp_better_cost_set_ary = [], not_temp_better_cost_set_ary = [];
 				for(kth = 0; kth < this.config.variable_ranges[0].length ; kth++){
 					temp_better_cost_set_ary.push(temp_better_cost_set);
+					not_temp_better_cost_set_ary,push(not_temp_better_cost_set);
 				}
 				
-				var better_cost_set = numeric.transpose(temp_better_cost_set_ary); // need to be modified
-				
+				var better_cost_set = numeric.transpose(temp_better_cost_set_ary);
 				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
-				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set, not_temp_better_cost_set]); // need to be modified
+				
+				var not_better_cost_set = numeric.transpose(not_temp_better_cost_set_ary);
 				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
+				
 				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
 				
 				var temp_optimal = Math.min.apply(Math, this.config.local_optimal_value_set);
