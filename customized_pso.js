@@ -163,7 +163,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
 				// test
 				if(ith == 1){
-					console.log(updated_self_learning_rate); // bug with particles_velocity
+					console.log(updated_cognitive_learning_rate); // bug with particles_velocity
 					return;
 				}
 				
