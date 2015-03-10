@@ -225,7 +225,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					temp_better_cost_set_ary.push(temp_better_cost_set);
 				}
 				
-				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); // need to be modified
+				var better_cost_set = numeric.transpose(temp_better_cost_set_ary); // need to be modified
 				
 				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
 				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set, not_temp_better_cost_set]); // need to be modified
