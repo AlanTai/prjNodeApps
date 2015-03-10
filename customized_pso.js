@@ -104,7 +104,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
 			
 			// init particles velocity
-			this.config.particles_velocity = numeric.rep([this.config.particles_size], Array.apply(null, new Array(this.config.variable_ranges[0].length)).map(Number.prototype.valueOf, 0)); // need to be modified
+			this.config.particles_velocity = numeric.rep([this.config.particles_size], Array.apply(null, new Array(this.config.variable_ranges[0].length)).map(Number.prototype.valueOf, 0));
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
@@ -147,7 +147,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				this.config.learning_rate_self = this.config.learning_rate_self_param_max - (this.config.learning_rate_self_param_max - this.config.learning_rate_self_param_min) * (ith + 1) / this.config.iteration;
 				
-				this.config.learning_rate_cognitive = this.config.learning_rate_cognitive_max - (this.config.learning_rate_cognitive_max - this.config.learning_rate_cognitive_min) * (ith + 1) / this.config.iteration; //
+				this.config.learning_rate_cognitive = this.config.learning_rate_cognitive_max - (this.config.learning_rate_cognitive_max - this.config.learning_rate_cognitive_min) * (ith + 1) / this.config.iteration;
 				this.config.learning_rate_social = 4.1 - this.config.learning_rate_cognitive;
 				
 				var random_factor_cognitive = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
@@ -220,7 +220,12 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var original_cost_set = numeric.mul(not_temp_better_cost_set, this.config.local_optimal_value_set);
 				this.config.local_optimal_value_set = numeric.add(replaced_cost_set, original_cost_set);
 				
-				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); // need to be modified
+				var temp_better_cost_set_ary = [];
+				for(ith = 0; ith < this.config.variable_ranges[0].length ; ith++){
+					temp_better_cost_set_ary.push(temp_better_cost_set);
+				}
+				
+				var better_cost_set = numeric.transpose(temp_better_cost_set_ary); // need to be modified
 				
 				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
 				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set, not_temp_better_cost_set]); // need to be modified
