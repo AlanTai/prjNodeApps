@@ -193,8 +193,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.performance_index_set = [];
 				
 				for(var jth = 0; jth < this.config.particles_size; jth++){
-					var temp_particle_values = [];
-					temp_particle_values = this.config.particles_values[jth];
+					var temp_particle_values = this.config.particles_values[jth];
 					
 					// performance index
 					var performance_index;
@@ -259,7 +258,7 @@ GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z)
 	/* Performance index for Demo:
 	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z); */
 	var performance_value = (Math.sin(arg_x) * Math.cos(arg_y + 0.5 * arg_x) + Math.pow(arg_z, 2) * Math.cos(arg_x + arg_y * arg_z));
-	// console.log("x: " + arg_x + " ; y: " + arg_y + " ; z: " + arg_z);
+	console.log("x: " + arg_x + " ; y: " + arg_y + " ; z: " + arg_z);
 	return performance_value;
 };
 
