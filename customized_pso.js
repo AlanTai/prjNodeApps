@@ -100,7 +100,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			
 			// init particles velocity
 			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0, 0]); // need to be modified
-			console.log(this.config.particles_velocity);
+			// console.log(this.config.particles_velocity);
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
