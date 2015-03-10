@@ -164,13 +164,13 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				// update velocity
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
+				
+				// update particles' values
+				this.config.particles_values = numeric.add(this.config.particles_values, this.config.particles_velocity);
 				console.log('particles_velocity:');
 				console.log(this.config.particles_velocity);
 				return;
 				
-				// update particles' values
-				this.config.particles_values = numeric.add(this.config.particles_values, this.config.particles_velocity);
-
 				// find out values outside boundaries
 				var low_boundaries_set = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 				var up_boundaries_set = numeric.rep([this.config.particles_size], this.config.up_boundaries);
