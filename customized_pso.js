@@ -91,6 +91,12 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.iteration = arg_iteration;
 		},
 		
+		set_max_min_factor : function(arg_max_min_factor){
+			if(arg_max_min_factor === -1 || arg_max_min_factor === 1){
+				this.config.max_min_factor = arg_max_min_factor;
+			}
+		},
+		
 		// initialization function
 		init_pso : function(){
 			/* new */
@@ -285,4 +291,5 @@ GLOBAL.customized_optimization.variable_ranges = [[-10, -5, -15, 5], [30, 50, 25
 GLOBAL.particles_swarm_optimization.set_customized_performance_index_and_variable_ranges(GLOBAL.customized_optimization.performance_index, GLOBAL.customized_optimization.variable_ranges);
 GLOBAL.particles_swarm_optimization.set_particles_size(200);
 GLOBAL.particles_swarm_optimization.set_iteration(300);
+GLOBAL.particles_swarm_optimization.set_max_min_factor(1);
 GLOBAL.particles_swarm_optimization.start_optimization();
