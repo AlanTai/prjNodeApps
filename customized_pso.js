@@ -108,6 +108,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					performance_index = (0.007 * temp_particle_values[0] * (-temp_particle_values[1] - 1)) * (Math.cos(temp_particle_values[0] + 0.3) - Math.sin(temp_particle_values[1])) + (1 - Math.sin(temp_particle_values[0]));
 				}else{
 					performance_index = this.config.customized_performance_index.apply(undefined, temp_particle_values);
+					console.log(performance_index);
 				}
 				
 				if (performance_index > this.config.Emax){
@@ -118,7 +119,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				}
 				this.config.performance_initial_index_set.push(performance_index);
 			}
-			console.log(JSON.stringify(this.config.performance_initial_index_set, 2, 2));
+			// console.log(JSON.stringify(this.config.performance_initial_index_set, 2, 2));
 			
 			// update optimal
 			var temp_cost = numeric.mul(- this.config.max_min_factor, this.config.performance_initial_index_set);
