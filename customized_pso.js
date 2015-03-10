@@ -260,7 +260,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		start_optimization : function(){
 			this.init_pso();
 			this.go_iteration();
-			console.log(JSON.stringify(this.config.global_optimal,2,2));
+			console.log(JSON.stringify(this.config.global_optimal, 2, 2));
+			console.log(JSON.stringify(this.config.global_optimal_particles_set, 2, 2));
 		}
 }
 
@@ -270,7 +271,12 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 GLOBAL.customized_optimization = GLOBAL.customized_optimization || {};
 GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z, arg_a){
 	/* Performance index for Demo:
-	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z); */
+	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z);
+	 * Ranges:
+	 * -10 < arg_x < 30
+     * 20  < arg_y < 50
+	 * -15 < arg_z < 25
+	 * 5   < arg_a < 70 */
 	return (Math.sin(arg_x * arg_a) * Math.cos(arg_y + 0.5 * arg_x) + Math.pow(arg_z, 2) * Math.cos(arg_x + arg_y * arg_z));
 };
 
