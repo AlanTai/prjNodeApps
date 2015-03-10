@@ -217,7 +217,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var original_cost_set = numeric.mul(not_temp_better_cost_set, this.config.local_optimal_value_set);
 				this.config.local_optimal_value_set = numeric.add(replaced_cost_set, original_cost_set);
 				
-				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); //
+				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); // need to be modified
 				// test
 				// if(ith == 1){
 					// console.log(better_cost_set); // bug with particles_velocity
@@ -225,7 +225,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				// }
 				
 				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
-				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
+				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set, not_temp_better_cost_set]); // need to be modified
 				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
 				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
 				
@@ -259,7 +259,7 @@ GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z)
 	/* Performance index for Demo:
 	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z); */
 	var performance_value = (Math.sin(arg_x) * Math.cos(arg_y + 0.5 * arg_x) + Math.pow(arg_z, 2) * Math.cos(arg_x + arg_y * arg_z));
-	console.log("x: " + arg_x + " ; y: " + arg_y + " ; z: " + arg_z);
+	// console.log("x: " + arg_x + " ; y: " + arg_y + " ; z: " + arg_z);
 	return performance_value;
 };
 
