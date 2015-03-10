@@ -219,10 +219,10 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); //
 				// test
-				if(ith == 1){
-					console.log(better_cost_set); // bug with particles_velocity
-					return;
-				}
+				// if(ith == 1){
+					// console.log(better_cost_set); // bug with particles_velocity
+					// return;
+				// }
 				
 				better_cost_set = numeric.mul(better_cost_set, this.config.particles_values);
 				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
