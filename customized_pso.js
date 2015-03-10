@@ -260,8 +260,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		start_optimization : function(){
 			this.init_pso();
 			this.go_iteration();
-			console.log(JSON.stringify(this.config.global_optimal, 2, 2));
 			console.log(JSON.stringify(this.config.global_optimal_particles_set, 2, 2));
+			console.log(JSON.stringify(this.config.global_optimal, 2, 2));
 		}
 }
 
@@ -274,13 +274,14 @@ GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z,
 	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z);
 	 * Ranges:
 	 * -10 < arg_x < 30
-     * 20  < arg_y < 50
+     * -5  < arg_y < 50
 	 * -15 < arg_z < 25
 	 * 5   < arg_a < 70 */
-	return (Math.sin(arg_x * arg_a) * Math.cos(arg_y + 0.5 * arg_x) + Math.pow(arg_z, 2) * Math.cos(arg_x + arg_y * arg_z));
+	 
+	return (Math.sin(arg_x * arg_a) * Math.cos(arg_y + 0.5 * arg_x) + Math.sin(Math.pow(arg_z, 2) + arg_y) * Math.cos(arg_x + arg_y * arg_z));
 };
 
-GLOBAL.customized_optimization.variable_ranges = [[-10, 20, -15, 5], [30, 50, 25, 70]];
+GLOBAL.customized_optimization.variable_ranges = [[-10, -5, -15, 5], [30, 50, 25, 70]];
 GLOBAL.particles_swarm_optimization.set_customized_performance_index_and_variable_ranges(GLOBAL.customized_optimization.performance_index, GLOBAL.customized_optimization.variable_ranges);
 GLOBAL.particles_swarm_optimization.set_particles_size(200);
 GLOBAL.particles_swarm_optimization.set_iteration(300);
