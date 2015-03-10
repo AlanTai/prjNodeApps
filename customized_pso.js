@@ -166,6 +166,12 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				// update particles' values
 				this.config.particles_values = numeric.add(this.config.particles_values, this.config.particles_velocity);
 				
+				// test
+				if(ith == 1){
+					console.log(this.config.particles_values);
+					return;
+				}
+				
 				// find out values outside boundaries
 				var low_boundaries_set = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 				var up_boundaries_set = numeric.rep([this.config.particles_size], this.config.up_boundaries);
@@ -185,10 +191,10 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.particles_values = numeric.add(max_replaced_values, max_original_values);
 				
 				// test
-				if(ith == 1){
-					console.log(this.config.particles_values);
-					return;
-				}
+				// if(ith == 1){
+					// console.log(this.config.particles_values);
+					// return;
+				// }
 				
 				// evaluate performance
 				this.config.performance_index_set = [];
