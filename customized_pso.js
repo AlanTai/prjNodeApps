@@ -276,19 +276,20 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 // GLOBAL.particles_swarm_optimization.start_optimization();
 
 GLOBAL.customized_optimization = GLOBAL.customized_optimization || {};
-GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z, arg_a){
+GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z, arg_a, arg_b){
 	/* Performance index for Demo:
 	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z);
 	 * Ranges:
 	 * -10 < arg_x < 30
      * -5  < arg_y < 50
 	 * -15 < arg_z < 25
-	 * 5   < arg_a < 70 */
+	 * 5   < arg_a < 70
+	 * -10 < arg_b < 5 */
 	 
-	return (Math.sin(arg_x * arg_a) * Math.cos(arg_y + 0.5 * arg_x) + arg_a * Math.cos(arg_x + arg_y * arg_z));
+	return (arg_b * Math.sin(arg_x * arg_a) * Math.cos(arg_y + 0.5 * arg_x) + arg_a * Math.cos(arg_x + arg_y * arg_z));
 };
 
-GLOBAL.customized_optimization.variable_ranges = [[-10, -5, -15, 5], [30, 50, 25, 70]];
+GLOBAL.customized_optimization.variable_ranges = [[-10, -5, -15, 5, -10], [30, 50, 25, 70, 5]];
 GLOBAL.particles_swarm_optimization.set_customized_performance_index_and_variable_ranges(GLOBAL.customized_optimization.performance_index, GLOBAL.customized_optimization.variable_ranges);
 GLOBAL.particles_swarm_optimization.set_particles_size(200);
 GLOBAL.particles_swarm_optimization.set_iteration(300);
