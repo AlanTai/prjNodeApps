@@ -93,7 +93,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			// init particles' values
 			this.config.particles_values = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 			// console.log(this.config.particles_values);
-			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0, 0], [0, this.config.diff_of_ranges[1], 0], [0, 0, this.config.diff_of_ranges[1]]]);
+			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0, 0], [0, this.config.diff_of_ranges[1], 0], [0, 0, this.config.diff_of_ranges[1]]]); // need to be modified
 			// console.log(this.config.particles_values);
 			var temp_low_boundaries_matrix = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
@@ -217,7 +217,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var original_cost_set = numeric.mul(not_temp_better_cost_set, this.config.local_optimal_value_set);
 				this.config.local_optimal_value_set = numeric.add(replaced_cost_set, original_cost_set);
 				
-				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set]);
+				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); //
 				// test
 				if(ith == 1){
 					console.log(better_cost_set); // bug with particles_velocity
@@ -246,7 +246,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		// start optimization
 		start_optimization : function(){
 			this.init_pso();
-			//this.go_iteration();
+			this.go_iteration();
 			//console.log(JSON.stringify(this.config.global_optimal,2,2));
 		}
 }
