@@ -132,7 +132,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.local_optimal_particles_set = numeric.rep([this.config.particles_size], temp_optimal_particle);
 			this.config.global_optimal_particles_set = this.config.local_optimal_particles_set;
 			this.config.local_optimal_value_set = numeric.rep([this.config.particles_size], this.config.min_cost);
-			console.log(this.config.local_optimal_value_set);
 			
 			this.config.mean_cost = numeric.sum(temp_cost) / this.config.particles_size;
 			
