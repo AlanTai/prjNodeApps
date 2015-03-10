@@ -121,7 +121,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				}
 				this.config.performance_initial_index_set.push(performance_index);
 			}
-			console.log(JSON.stringify(this.config.performance_initial_index_set, 2, 2));
 			
 			// update optimal
 			var temp_cost = numeric.mul(- this.config.max_min_factor, this.config.performance_initial_index_set);
@@ -162,6 +161,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				updated_social_learning_rate = numeric.mul(this.config.learning_rate_social, random_factor_social, updated_social_learning_rate);
 				
 				temp_updated_velocity = numeric.add(updated_self_learning_rate, updated_cognitive_learning_rate, updated_social_learning_rate);
+				console.log(temp_updated_velocity);
 				
 				// update velocity
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
