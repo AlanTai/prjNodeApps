@@ -199,7 +199,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					}else{
 						performance_index = this.config.customized_performance_index.apply(undefined, temp_particle_values);
 					}
-					console.log(temp_particle_values);
+					console.log(performance_index);
 					return;
 					
 					if (performance_index > this.config.Emax){
