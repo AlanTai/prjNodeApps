@@ -152,11 +152,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var updated_self_learning_rate = numeric.mul(this.config.learning_rate_self, this.config.particles_velocity);
 				
 				var updated_cognitive_learning_rate = numeric.sub(this.config.local_optimal_particles_set, this.config.particles_values );
-				// test
-				if(ith == 1){
-					console.log(this.config.particles_values); // bug with particles_velocity
-					return;
-				}
+				
 				updated_cognitive_learning_rate = numeric.mul(this.config.learning_rate_cognitive, random_factor_cognitive, updated_cognitive_learning_rate);
 				
 				var updated_social_learning_rate = numeric.sub(this.config.global_optimal_particles_set, this.config.particles_values);
@@ -166,20 +162,9 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				// update velocity
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
-				// test
-				// if(ith == 1){
-					// console.log(updated_cognitive_learning_rate); // bug with particles_velocity
-					// return;
-				// }
 				
 				// update particles' values
 				this.config.particles_values = numeric.add(this.config.particles_values, this.config.particles_velocity);
-				
-				// test
-				// if(ith == 1){
-					// console.log(this.config.particles_values);
-					// return;
-				// }
 				
 				// find out values outside boundaries
 				var low_boundaries_set = numeric.rep([this.config.particles_size], this.config.low_boundaries);
@@ -198,12 +183,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var max_original_values = numeric.mul(not_outside_max_boundary, this.config.particles_values);
 				
 				this.config.particles_values = numeric.add(max_replaced_values, max_original_values);
-				
-				// test
-				// if(ith == 1){
-					// console.log(this.config.particles_values);
-					// return;
-				// }
 				
 				// evaluate performance
 				this.config.performance_index_set = [];
@@ -242,7 +221,11 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var not_better_cost_set = numeric.transpose([not_temp_better_cost_set, not_temp_better_cost_set]);
 				not_better_cost_set = numeric.mul(not_better_cost_set, this.config.local_optimal_particles_set);
 				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
-				
+				// test
+				if(ith == 1){
+					console.log(this.config.local_optimal_particles_set); // bug with particles_velocity
+					return;
+				}
 				var temp_optimal = Math.min.apply(Math, this.config.local_optimal_value_set);
 				var temp_optimal_index = this.config.local_optimal_value_set.indexOf(temp_optimal);
 				var pre_global_optimal = this.config.global_optimal;
