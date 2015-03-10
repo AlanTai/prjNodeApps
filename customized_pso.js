@@ -234,7 +234,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				}
 				
 				// test
-				if(ith == 0){
+				if(ith == 1){
 					console.log(this.config.particles_values);
 					return;
 				}
