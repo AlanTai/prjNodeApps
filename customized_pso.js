@@ -233,9 +233,9 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					}
 				}
 				
-				
-				console.log(this.config.learning_rate_self);
+				// test
 				if(ith == 1){
+					console.log(this.config.particles_velocity);
 					return;
 				}
 			}
