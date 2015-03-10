@@ -223,7 +223,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.local_optimal_particles_set = numeric.add(better_cost_set, not_better_cost_set);
 				// test
 				if(ith == 1){
-					console.log(this.config.local_optimal_particles_set); // bug with particles_velocity
+					console.log(better_cost_set); // bug with particles_velocity
 					return;
 				}
 				var temp_optimal = Math.min.apply(Math, this.config.local_optimal_value_set);
