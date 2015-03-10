@@ -163,7 +163,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
 				// test
 				if(ith == 1){
-					console.log(temp_updated_velocity); // bug with particles_velocity
+					console.log(updated_self_learning_rate); // bug with particles_velocity
 					return;
 				}
 				
@@ -268,7 +268,7 @@ GLOBAL.customized_optimization.performance_index = function(arg_x, arg_y, arg_z)
 	/* Performance index for Demo:
 	 * sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z); */
 	var performance_value = (Math.sin(arg_x) * Math.cos(arg_y + 0.5 * arg_x) + Math.pow(arg_z, 2) * Math.cos(arg_x + arg_y * arg_z));
-	console.log("x: " + arg_x + " ; y: " + arg_y + " ; z: " + arg_z);
+	// console.log("x: " + arg_x + " ; y: " + arg_y + " ; z: " + arg_z);
 	return performance_value;
 };
 
