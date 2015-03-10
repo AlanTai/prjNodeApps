@@ -224,8 +224,8 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				for(ith = 0; ith < this.config.variable_ranges[0].length ; ith++){
 					temp_better_cost_set_ary.push(temp_better_cost_set);
 				}
-				console.log(temp_better_cost_set_ary);
-				return;
+				// console.log(temp_better_cost_set_ary);
+				// return;
 				
 				var better_cost_set = numeric.transpose([temp_better_cost_set, temp_better_cost_set, temp_better_cost_set]); // need to be modified
 				
