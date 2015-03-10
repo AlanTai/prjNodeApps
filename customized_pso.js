@@ -94,7 +94,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.particles_values = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 			var diff_ary = [];
 			for(ith = 0; ith < this.config.diff_of_ranges[0].length ; ith++){
-				var diff = new Array.apply(null, new Array(this.config.variable_ranges[0].length)).map(Number.prototype.valueOf,0);
+				var diff = new Array.apply(null, new Array(3)).map(Number.prototype.valueOf, 0);
 				diff[ith] = this.config.diff_of_ranges[ith];
 				diff_ary.push(diff);
 			}
