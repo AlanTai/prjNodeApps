@@ -140,6 +140,13 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		// go through iteration
 		go_iteration : function(){
 			for(var ith = 0; ith < this.config.iteration; ith++ ){
+				
+				// test
+				if(ith == 1){
+					console.log(this.config.particles_values);
+					return;
+				}
+			
 				this.config.learning_rate_self = this.config.learning_rate_self_param_max - (this.config.learning_rate_self_param_max - this.config.learning_rate_self_param_min) * (ith + 1) / this.config.iteration;
 				
 				this.config.learning_rate_cognitive = this.config.learning_rate_cognitive_max - (this.config.learning_rate_cognitive_max - this.config.learning_rate_cognitive_min) * (ith + 1) / this.config.iteration; //
@@ -231,12 +238,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 					if (Math.abs(temp_optimal - pre_global_optimal) < numeric.epsilon){
 						break;
 					}
-				}
-				
-				// test
-				if(ith == 1){
-					console.log(this.config.particles_values);
-					return;
 				}
 			}
 		},
