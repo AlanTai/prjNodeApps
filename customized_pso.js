@@ -153,6 +153,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				var temp_updated_velocity = [];
 				var updated_self_learning_rate = numeric.mul(this.config.learning_rate_self, this.config.particles_velocity);
+				console.log(updated_self_learning_rate);
 				
 				var updated_cognitive_learning_rate = numeric.sub(this.config.local_optimal_particles_set, this.config.particles_values );
 				updated_cognitive_learning_rate = numeric.mul(this.config.learning_rate_cognitive, random_factor_cognitive, updated_cognitive_learning_rate);
@@ -161,7 +162,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				updated_social_learning_rate = numeric.mul(this.config.learning_rate_social, random_factor_social, updated_social_learning_rate);
 				
 				temp_updated_velocity = numeric.add(updated_self_learning_rate, updated_cognitive_learning_rate, updated_social_learning_rate);
-				console.log(temp_updated_velocity);
+				// console.log(temp_updated_velocity);
 				
 				// update velocity
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
@@ -178,7 +179,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var min_replaced_values = numeric.mul(outside_min_boundary, low_boundaries_set);
 				var min_original_values = numeric.mul(not_outside_min_boundary, this.config.particles_values);
 				
-				console.log("before particles_values...");
 				this.config.particles_values = numeric.add(min_replaced_values, min_original_values);
 				
 				var outside_max_boundary = numeric.geq(this.config.particles_values, up_boundaries_set);
