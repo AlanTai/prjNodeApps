@@ -154,7 +154,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var updated_cognitive_learning_rate = numeric.sub(this.config.local_optimal_particles_set, this.config.particles_values );
 				// test
 				if(ith == 1){
-					console.log(this.config.local_optimal_particles_set); // bug with particles_velocity
+					console.log(this.config.particles_values); // bug with particles_velocity
 					return;
 				}
 				updated_cognitive_learning_rate = numeric.mul(this.config.learning_rate_cognitive, random_factor_cognitive, updated_cognitive_learning_rate);
