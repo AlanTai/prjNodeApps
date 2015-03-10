@@ -148,21 +148,26 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				var random_factor_cognitive = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 				var random_factor_social = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 				
+				//
 				console.log("before temp_updated_velocity...");
 				
 				var temp_updated_velocity = [];
 				var updated_self_learning_rate = numeric.mul(this.config.learning_rate_self, this.config.particles_velocity);
 				
+				//
+				console.log("before updated_cognitive_learning_rate...");
+				
 				var updated_cognitive_learning_rate = numeric.sub(this.config.local_optimal_particles_set, this.config.particles_values );
 				updated_cognitive_learning_rate = numeric.mul(this.config.learning_rate_cognitive, random_factor_cognitive, updated_cognitive_learning_rate);
+				
+				//
+				console.log("before updated_social_learning_rate...");
 				
 				var updated_social_learning_rate = numeric.sub(this.config.global_optimal_particles_set, this.config.particles_values);
 				updated_social_learning_rate = numeric.mul(this.config.learning_rate_social, random_factor_social, updated_social_learning_rate);
 				
 				temp_updated_velocity = numeric.add(updated_self_learning_rate, updated_cognitive_learning_rate, updated_social_learning_rate);
 				
-				console.log("before particles_velocity...");
-
 				// update velocity
 				this.config.particles_velocity = numeric.mul(this.config.constriction_factor, temp_updated_velocity);
 
