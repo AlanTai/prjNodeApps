@@ -94,13 +94,12 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.particles_values = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
 			// console.log(this.config.particles_values);
 			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0, 0], [0, this.config.diff_of_ranges[1], 0], [0, 0, this.config.diff_of_ranges[1]]]);
-			console.log(this.config.particles_values);
+			// console.log(this.config.particles_values);
 			var temp_low_boundaries_matrix = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
 			
 			// init particles velocity
 			this.config.particles_velocity = numeric.rep([this.config.particles_size], [0, 0, 0]); // need to be modified
-			console.log(this.config.particles_velocity);
 			
 			// evaluate init particles set
 			for(var ith = 0; ith < this.config.particles_size; ith++){
@@ -152,8 +151,9 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				var temp_updated_velocity = [];
 				var updated_self_learning_rate = numeric.mul(this.config.learning_rate_self, this.config.particles_velocity);
-				//console.log('particles_velocity:');
-				//console.log(this.config.particles_velocity);
+				console.log('particles_velocity:');
+				console.log(this.config.particles_velocity);
+				return;
 				
 				var updated_cognitive_learning_rate = numeric.sub(this.config.local_optimal_particles_set, this.config.particles_values );
 				updated_cognitive_learning_rate = numeric.mul(this.config.learning_rate_cognitive, random_factor_cognitive, updated_cognitive_learning_rate);
