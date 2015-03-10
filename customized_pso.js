@@ -142,7 +142,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			for(var ith = 0; ith < this.config.iteration; ith++ ){
 				
 				// test
-				if(ith == 1){
+				if(ith == 2){
 					console.log(this.config.particles_values);
 					return;
 				}
