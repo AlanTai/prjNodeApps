@@ -267,7 +267,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.init_pso();
 			this.go_iteration();
 			console.log(JSON.stringify(this.config.global_optimal_particles_set, 2, 2));
-			console.log(JSON.stringify(this.config.global_optimal, 2, 2));
+			console.log(-this.config.max_min_factor * this.config.global_optimal);
 			console.log(-this.config.max_min_factor * this.config.max_min_factor);
 		}
 }
