@@ -234,7 +234,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				}
 				
 				
-				console.log(temp_updated_velocity);
+				console.log(this.config.learning_rate_self);
 				if(ith == 1){
 					return;
 				}
