@@ -92,9 +92,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			
 			// init particles' values
 			this.config.particles_values = numeric.random([this.config.particles_size, this.config.variable_ranges[0].length]);
-			// console.log(this.config.particles_values);
-			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0, 0], [0, this.config.diff_of_ranges[1], 0], [0, 0, this.config.diff_of_ranges[1]]]); // need to be modified
-			// console.log(this.config.particles_values);
+			this.config.particles_values = numeric.dotMMbig(this.config.particles_values, [[this.config.diff_of_ranges[0], 0, 0], [0, this.config.diff_of_ranges[1], 0], [0, 0, this.config.diff_of_ranges[2]]]); // need to be modified
 			var temp_low_boundaries_matrix = numeric.rep([this.config.particles_size], this.config.low_boundaries);
 			this.config.particles_values = numeric.add(this.config.particles_values, temp_low_boundaries_matrix);
 			
@@ -134,7 +132,6 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 			this.config.local_optimal_value_set = numeric.rep([this.config.particles_size], this.config.min_cost);
 			
 			this.config.mean_cost = numeric.sum(temp_cost) / this.config.particles_size;
-			
 		},
 		
 		// go through iteration
