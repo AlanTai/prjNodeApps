@@ -118,6 +118,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				}
 				this.config.performance_initial_index_set.push(performance_index);
 			}
+			console.log(JSON.stringify(this.config.performance_initial_index_set, 2, 2));
 			
 			// update optimal
 			var temp_cost = numeric.mul(- this.config.max_min_factor, this.config.performance_initial_index_set);
@@ -153,7 +154,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 				
 				//
 				console.log("before updated_cognitive_learning_rate...");
-				console.log(JSON.stringify(this.config.local_optimal_particles_set, 2, 2));
+				console.log(JSON.stringify(this.config.local_optimal_particles_set, 2, 2)); // null
 				
 				var updated_cognitive_learning_rate = numeric.sub(this.config.local_optimal_particles_set, this.config.particles_values );
 				updated_cognitive_learning_rate = numeric.mul(this.config.learning_rate_cognitive, random_factor_cognitive, updated_cognitive_learning_rate);
