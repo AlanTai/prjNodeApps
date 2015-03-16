@@ -272,7 +272,7 @@ GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
 		}
 }
 
-// test
+// default testing
 // GLOBAL.particles_swarm_optimization.start_optimization();
 
 GLOBAL.customized_optimization = GLOBAL.customized_optimization || {};
