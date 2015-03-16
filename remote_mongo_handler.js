@@ -20,7 +20,7 @@ GLOBAL.mysql_connection = mysql.createConnection({
 
 mysql_connection.connect();
 mysql_connection.query('SELECT * FROM user', function(err, rows, fields){
-	console.log(rows);
+	console.log(fields);
 });
 
 // start testing
