@@ -15,7 +15,8 @@ GLOBAL.remote_collection = remote_db.collection('fund364');
 GLOBAL.mysql_connection = mysql.createConnection({
 	host : 'localhost',
 	user : 'fund364_user',
-	password : 'crowdFunding'
+	password : 'crowdFunding',
+	database : 'fund364db_new'
 });
 
 mysql_connection.connect();
