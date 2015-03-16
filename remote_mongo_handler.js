@@ -19,6 +19,9 @@ GLOBAL.mysql_connection = mysql.createConnection({
 });
 
 mysql_connection.connect();
+mysql_connection.query('SELECT * FROM user', function(err, rows, fields){
+	console.log(rows);
+});
 
 // start testing
 local_collection.find(function(err, docs){
@@ -27,5 +30,9 @@ local_collection.find(function(err, docs){
 
 remote_collection.find(function(err, docs){
 	console.log(docs);
+	// end connections
+	mysql_connection.end(function(err){
+		console.log('end mysql');
+	});
 	process.exit( code = 0 );
 });
