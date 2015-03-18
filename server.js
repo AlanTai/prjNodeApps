@@ -1,6 +1,6 @@
 /* required modules */
 
-GLOBAL.http = reuiqre('http');
+GLOBAL.http = require('http');
 GLOBAL.url = require('url');
 GLOBAL.fs = require('fs');
 
