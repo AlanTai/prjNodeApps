@@ -1,7 +1,10 @@
 /* config. */
 // require necessary modules
-GLOBAL.mongojs = require('mongojs');
-GLOBAL.mysql = require('mysql');
+GLOBAL.mongojs = require('mongojs'),
+GLOBAL.mysql = require('mysql'),
+GLOBAL.http = require('http'),
+GLOBAL.url = require('url'),
+GLOBAL.fs = require('fs');
 
 // localhost mongo config.
 GLOBAL.local_db = mongojs('localhost/crowdfunding', ['fund364_temp']);
