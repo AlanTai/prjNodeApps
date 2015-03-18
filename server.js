@@ -11,7 +11,7 @@ GLOBAL.server = http.createServer(function(req, res){
 	// switcher
 	switch(path){
 		case '/':
-			res.writeHead(200, {Content-Type : 'text/html'});
+			res.writeHead(200, {'Content-Type' : 'text/html'});
 			res.write('Hello World');
 			break;
 		case 'socket.html':
@@ -20,7 +20,7 @@ GLOBAL.server = http.createServer(function(req, res){
 					res.writeHead(404);
 					res.write("This page doesn't exist- 404");
 				}else{
-					res.writeHead(200, {Content-Type : "text/html"});
+					res.writeHead(200, {'Content-Type' : "text/html"});
 					res.write(data, "utf8");
 				}
 			});
