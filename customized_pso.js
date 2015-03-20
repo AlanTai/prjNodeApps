@@ -4,7 +4,7 @@ GLOBAL.numeric = require('numeric');
 /*
  *  Particles Swarm Optimization
  *  This is a standard PSO to find out optimal solution through out the stochastic spaces
- *  PS: Current test function is (0.007 * x_1 * (-x_2 -1)) * ( cos(x_1 + 0.3) - sin(x_2))+(1 - sin(x_1)) and the optimal value is around -1.798
+ *  PS: Current test function is sin(arg_x) * cos(arg_y + 0.5 * arg_x) + arg_z^2 * cos(arg_x + arg_y * arg_z);
  * */
 
 GLOBAL.particles_swarm_optimization = GLOBAL.particles_swarm_optimization || {
