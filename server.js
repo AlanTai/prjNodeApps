@@ -28,9 +28,10 @@ GLOBAL.server = http.createServer(function(req, res){
 		default:
 			res.writeHead(404);
 			res.write("This page doesn't exist - 404");
+			break;
 	};
 	
-	//
+	// end response
 	res.end();
 });
 
