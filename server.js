@@ -2,7 +2,7 @@
 GLOBAL.http = require('http');
 GLOBAL.url = require('url');
 GLOBAL.fs = require('fs');
-GLOBAL.io = require('socket.io');
+// GLOBAL.io = require('socket.io');
 
 GLOBAL.server = http.createServer(function(req, res){
 	console.log('Connection');
@@ -36,4 +36,4 @@ GLOBAL.server = http.createServer(function(req, res){
 
 // start server
 server.listen(8001);
-var GLOBAL.io.listen(server);
+//var GLOBAL.io.listen(server);
