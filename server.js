@@ -5,7 +5,7 @@ GLOBAL.fs = require('fs');
 // GLOBAL.io = require('socket.io');
 
 GLOBAL.server = http.createServer(function(req, res){
-	console.log('Connection');
+	console.log('Connected...');
 	var path = url.parse(req.url).pathname;
 	
 	// switcher
@@ -24,6 +24,9 @@ GLOBAL.server = http.createServer(function(req, res){
 					res.write(data, "utf8");
 				}
 			});
+			break;
+		case '/check_status':
+			res.send('hello node.js');
 			break;
 		default:
 			res.writeHead(404);
