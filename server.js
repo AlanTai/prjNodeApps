@@ -26,7 +26,7 @@ GLOBAL.server = http.createServer(function(req, res){
 			});
 			break;
 		case '/check_status':
-			res.send('hello node.js');
+			res.write('hello node.js');
 			break;
 		default:
 			res.writeHead(404);
