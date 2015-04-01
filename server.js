@@ -26,8 +26,9 @@ GLOBAL.server = http.createServer(function(req, res){
 			});
 			break;
 		case '/check_status':
+			var msg = { 'msg' : 'hello node.js'};
 			res.writeHead(200, {"Content-Type": "application/json"});
-			res.write(JSON.stringify('hello node.js'));
+			res.write(JSON.stringify(msg));
 			break;
 		default:
 			res.writeHead(404);
