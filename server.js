@@ -7,6 +7,7 @@ GLOBAL.fs = require('fs');
 GLOBAL.server = http.createServer(function(req, res){
 	console.log('Connected...');
 	var path = url.parse(req.url).pathname;
+	var query = url.parse(req.url, true).query;
 	
 	// switcher
 	switch(path){
@@ -27,7 +28,7 @@ GLOBAL.server = http.createServer(function(req, res){
 			break;
 		case '/check_status':
 			res.writeHead(200, {"Content-Type": "application/json"});
-			res.write([{ 'msg' : 'hello node.js'}]);
+			res.write(query.callback + '(' + { 'msg' : 'hello node.js'} + ')');
 			break;
 		default:
 			res.writeHead(404);
